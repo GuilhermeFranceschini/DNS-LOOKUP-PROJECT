@@ -4,4 +4,5 @@ def dnslook(domain, record_type):
     answers = dns.resolver.resolve(domain, 'A')
     for answer in answers:
         print(f"Endereço IP: {answer.to_text()}")
+dnslook('example.com', 'A')
 
