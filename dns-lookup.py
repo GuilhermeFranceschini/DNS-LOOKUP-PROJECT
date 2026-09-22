@@ -19,16 +19,12 @@ print("\nn1. Consultar registros A (IPv4)" \
 "\nn4. Consultar registros NS (Name Server)")
 opcao = int(input("\nDigite o número da opção desejada: "))
 if opcao == 1:
-    record_type = 'A'
     dnslook(domain, 'A')
 if opcao == 2:
-    record_type = 'AAAA'
     dnslook(domain, 'AAAA')
 if opcao == 3:
-    record_type = 'MX'
     dnslook(domain, 'MX')
 if opcao == 4:
-    record_type = 'NS'
     dnslook(domain, 'NS')
 if opcao < 1 or opcao > 4:
     print("Opção inválida. Encerrando o programa.")
