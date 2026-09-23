@@ -30,7 +30,7 @@ while True:
         dnslook(domain, 'NS')
     if opcao == 5:
         print("Saindo do programa.")
-    exit()
+        break
     if opcao < 1 or opcao > 5:
         print("Opção inválida. Encerrando o programa.")
         break
