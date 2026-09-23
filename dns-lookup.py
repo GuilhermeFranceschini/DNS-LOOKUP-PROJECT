@@ -9,30 +9,36 @@ def dnslook(domain, record_type):
     except dns.resolver.NoAnswer:
         print(f"{record_type}: Nenhum registro encontrado.")    
 print("Bem-vindo ao programa de consulta DNS!\n")
-domain = input("Digite o domínio que deseja consultar: ")
+try:
+    domain = input("Digite o domínio que deseja consultar: ")
+except KeyboardInterrupt:
+    print("\nOperação interrompida pelo usuário.")
+    exit()
 if not domain:
     print("Nenhum domínio fornecido. Encerrando o programa.")
     exit()
 while True:
-    print("\nn1. Consultar registros A (IPv4)" \
-    "\nn2. Consultar registros AAAA (IPv6)" \
-    "\nn3. Consultar registros MX (Mail Exchange)" \
-    "\nn4. Consultar registros NS (Name Server)" \
-    "\nn5. Sair do programa")
-    opcao = int(input("\nDigite o número da opção desejada: "))
-    if opcao == 1:
-        dnslook(domain, 'A')
-    if opcao == 2:
-        dnslook(domain, 'AAAA')
-    if opcao == 3:
-        dnslook(domain, 'MX')
-    if opcao == 4:
-        dnslook(domain, 'NS')
-    if opcao == 5:
-        print("Saindo do programa.")
-        break
-    if opcao < 1 or opcao > 5:
-        print("Opção inválida. Encerrando o programa.")
-        break
-    print("Consulta concluída.\n")
+    try:
+        print("\nn1. Consultar registros A (IPv4)" \
+        "\nn2. Consultar registros AAAA (IPv6)" \
+        "\nn3. Consultar registros MX (Mail Exchange)" \
+        "\nn4. Consultar registros NS (Name Server)" \
+        "\nn5. Sair do programa")
+        opcao = int(input("\nDigite o número da opção desejada: "))
+        if opcao == 1:
+            dnslook(domain, 'A')
+        elif opcao == 2:
+            dnslook(domain, 'AAAA')
+        elif opcao == 3:
+            dnslook(domain, 'MX')
+        elif opcao == 4:
+            dnslook(domain, 'NS')
+        elif opcao == 5:
+            print("Saindo do programa.")
+            break
+        else:
+            print("Opção inválida. Encerrando o programa.")
+    except ValueError:
+        print("Entrada inválida. Por favor, digite um número válido.")
+    
 
